@@ -194,6 +194,8 @@ const pasos = [
           el('h3', { textContent: 'Armarlo' }),
           el('p', { className: 'ayuda', textContent: 'Cómo se conecta cada componente y cómo va cada pieza, paso a paso con imágenes.' }),
           el('a', { className: 'guia', href: 'https://github.com/popertoelpoperon/llavero-oled#armado', target: '_blank', rel: 'noopener', textContent: 'Ver la guía de armado' }))),
+      el('p', { className: 'cafecito' }, '¿Te sirvió? ',
+        el('a', { href: 'https://cafecito.app/poperto', target: '_blank', rel: 'noopener', textContent: 'Invitame un cafecito' }), ' ☕'),
     ];
   },
 ];
