@@ -194,18 +194,32 @@ const pasos = [
           el('h3', { textContent: 'Armarlo' }),
           el('p', { className: 'ayuda', textContent: 'Cómo se conecta cada componente y cómo va cada pieza, paso a paso con imágenes.' }),
           el('a', { className: 'guia', href: 'https://github.com/popertoelpoperon/llavero-oled#armado', target: '_blank', rel: 'noopener', textContent: 'Ver la guía de armado' }))),
-      el('p', { className: 'cafecito' }, '¿Te sirvió? ',
-        el('a', { href: 'https://cafecito.app/poperto', target: '_blank', rel: 'noopener', textContent: 'Invitame un cafecito' }), ' ☕'),
     ];
   },
 ];
 
 // ---------- acciones finales ----------
+// Cartelito del cafecito: aparece una sola vez, la primera vez que alguien graba o descarga
+function mostrarCafecito() {
+  try {
+    if (localStorage.getItem('gafete-cafecito')) return;
+    localStorage.setItem('gafete-cafecito', '1');
+  } catch { return; }
+  const cerrar = el('button', { type: 'button', className: 'cerrar', textContent: '✕', ariaLabel: 'Cerrar' });
+  const cartel = el('aside', { className: 'cartel-cafecito', role: 'status' },
+    el('p', {}, '¿Te sirvió? ', el('a', { href: 'https://cafecito.app/poperto', target: '_blank', rel: 'noopener', textContent: 'Invitame un cafecito' }), ' ☕'),
+    cerrar);
+  const quitar = () => cartel.remove();
+  cerrar.addEventListener('click', quitar);
+  setTimeout(quitar, 12000);
+  document.body.append(cartel);
+}
 function datosGafete() {
   return armarDatos({ ...textoActual(), cuadros: cara(estado.cara).cuadros });
 }
 
 async function grabarGafete(boton, barra, salida) {
+  mostrarCafecito();
   boton.disabled = true;
   barra.hidden = false;
   barra.value = 0;
@@ -247,6 +261,7 @@ async function armarSTL(n) {
 
 // que: 'cama' = un solo STL con todas las piezas; 'partes' = zip con un STL por pieza
 async function descargarSTL(boton, salida, que) {
+  mostrarCafecito();
   boton.disabled = true;
   salida.className = 'mensaje';
   salida.textContent = 'Armando las piezas con tu nombre…';

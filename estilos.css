@@ -197,8 +197,18 @@ input.grande { height: 60px; font-size: 28px; font-weight: 720; font-stretch: 11
 .accion:first-child { padding-top: 0; border-top: 0; }
 .botones { display: flex; flex-wrap: wrap; gap: 10px; }
 .guia { color: var(--pla); font-weight: 600; }
-.cafecito { margin-top: var(--e1); padding-top: var(--e3); border-top: 1px solid var(--linea); font-size: 14px; color: var(--tinta-suave); }
-.cafecito a { color: var(--tinta); }
+.cartel-cafecito {
+  position: fixed; z-index: 20; left: var(--e2); right: var(--e2); bottom: var(--e2);
+  display: flex; align-items: center; gap: var(--e2);
+  padding: 12px 12px 12px 18px; border-radius: var(--radio);
+  background: var(--campo); border: 1px solid var(--linea); box-shadow: 0 10px 30px rgb(0 0 0 / 0.45);
+  font-size: 14px; color: var(--tinta-suave);
+}
+.cartel-cafecito p { flex: 1; }
+.cartel-cafecito a { color: var(--tinta); font-weight: 600; }
+.cartel-cafecito .cerrar { min-height: 32px; width: 32px; padding: 0; background: none; color: var(--tinta-suave); font-size: 14px; }
+.cartel-cafecito .cerrar:hover { color: var(--tinta); }
+@media (min-width: 900px) { .cartel-cafecito { left: auto; right: var(--e3); bottom: var(--e3); max-width: 340px; } }
 .guia:hover { color: var(--pla-luz); }
 progress { width: 100%; max-width: 360px; height: 8px; accent-color: var(--pla); }
 

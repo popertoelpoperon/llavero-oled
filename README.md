@@ -71,3 +71,5 @@ De adelante hacia atrás, en este orden:
 `index.html`, `estilos.css` y `js/` son la página; `datos/` tiene las caras, la letra
 y el medallón; `firmware/` el programa ya compilado; `piezas/` los STL de la carcasa;
 `armado/` las imágenes de esta guía, y `vendor/` las librerías y la tipografía, con su licencia.
+
+¿Te sirvió? [Invitame un cafecito ☕](https://cafecito.app/poperto)
